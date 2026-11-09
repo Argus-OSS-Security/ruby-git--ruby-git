@@ -4,13 +4,14 @@ name: Conventional Commits
 permissions:
   contents: read
 
-on:
-  pull_request:
-    branches:
-      - main
-
-# Cancel an in-progress run when the same PR gets a new push; only the commit messages
-# as they stand after the latest push are worth linting.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     branches:
+#       - main
+# 
+# # Cancel an in-progress run when the same PR gets a new push; only the commit messages
+# # as they stand after the latest push are worth linting.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

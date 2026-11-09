@@ -22,16 +22,17 @@ name: Warm Bundler Caches
 # own ref, its base ref, and the default branch, so each branch is warmed by its own
 # copy of this file with its own matrix; a copy on another branch is never what runs
 # for a push here.
-on:
-  push:
-    branches: [main]
-
-  workflow_dispatch:
-
-# Deliberately NOT cancel-in-progress. Two merges landing close together would
-# otherwise cancel the first one's warming mid-save, which is the opposite of the
-# point; queueing them costs a couple of runner-minutes and always leaves a warm cache
-# behind. This group is also distinct from CI's because github.workflow differs.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches: [main]
+# 
+#   workflow_dispatch:
+# 
+# # Deliberately NOT cancel-in-progress. Two merges landing close together would
+# # otherwise cancel the first one's warming mid-save, which is the opposite of the
+# # point; queueing them costs a couple of runner-minutes and always leaves a warm cache
+# # behind. This group is also distinct from CI's because github.workflow differs.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false

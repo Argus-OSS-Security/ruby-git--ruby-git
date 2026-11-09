@@ -8,12 +8,13 @@ name: Release Gem
 # release creation process and the `rubygems/release-gem` action to publish
 # the gem to rubygems.org
 
-on:
-  push:
-    branches: ["main"]
-
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches: ["main"]
+# 
+#   workflow_dispatch:
+# 
 jobs:
   release:
     runs-on: ubuntu-latest
